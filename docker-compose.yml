@@ -1,0 +1,11 @@
+version: "3.2"
+services:
+
+  ms-db:
+    container_name: ms-db
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "MyPass123456"
+      ACCEPT_EULA: "Y"
