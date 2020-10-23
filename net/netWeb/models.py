@@ -3,11 +3,6 @@ from uuid import uuid4
 
 
 class BranchOffice(models.Model):
-    id = models.UUIDField(
-        primary_key=True,
-        default=uuid4,
-        editable=False
-    )
     office_name = models.CharField(
         max_length=200,
         verbose_name='Наименование филиала',
@@ -30,11 +25,6 @@ class BranchOffice(models.Model):
 
 
 class Inventory(models.Model):
-    id = models.UUIDField(
-        primary_key='True',
-        default=uuid4,
-        editable=False
-    )
     name = models.CharField(
         max_length=200,
         verbose_name='Наименование инвентаря',
@@ -69,11 +59,6 @@ class Inventory(models.Model):
 
 
 class Personal(models.Model):
-    id = models.UUIDField(
-        primary_key=True,
-        default=uuid4,
-        editable=False
-    )
     FIO = models.CharField(
         max_length=200,
         verbose_name='ФИО',
@@ -105,11 +90,6 @@ class Personal(models.Model):
 
 
 class Services(models.Model):
-    id = models.UUIDField(
-        primary_key=True,
-        default=uuid4,
-        editable=False
-    )
     name = models.CharField(
         max_length=200,
         verbose_name='Наименование',
@@ -173,4 +153,4 @@ class ServiceSignup(models.Model):
         verbose_name_plural = 'Записи'
 
     def __str__(self):
-        return self.time
+        return str(self.time)

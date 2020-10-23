@@ -1,12 +1,13 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.urls import path
 from djresty import rest, plugins
+from netWeb.api.v1.forms import ServiceSignupForm
 from netWeb.models import *
 
 
 class ServicesApi(rest.RestyView):
     @rest.resty(
-        url='get_list',
+        url='services_list',
         name='get-services-list',
         plugins=[
             plugins.MethodAllow(['GET']),
@@ -31,7 +32,7 @@ class ServicesApi(rest.RestyView):
         }, safe=False)
 
     @rest.resty(
-        url='get_by_pk',
+        url='service_by_pk/<int:pk>',
         name='get-service-pk',
         plugins=[
             plugins.MethodAllow(['GET']),
@@ -57,7 +58,7 @@ class ServicesApi(rest.RestyView):
 
 class PersonalApi(rest.RestyView):
     @rest.resty(
-        url='get_list',
+        url='personal_list',
         name='get-personal-list',
         plugins=[
             plugins.MethodAllow(['GET']),
@@ -80,7 +81,7 @@ class PersonalApi(rest.RestyView):
         }, safe=False)
 
     @rest.resty(
-        url='get_by_pk',
+        url='personal_by_pk/<int:pk>',
         name='get-personal-pk',
         plugins=[
             plugins.MethodAllow(['GET']),
@@ -104,7 +105,7 @@ class PersonalApi(rest.RestyView):
 
 class OfficesApi(rest.RestyView):
     @rest.resty(
-        url='get_list',
+        url='office_list',
         name='get-office-list',
         plugins=[
             plugins.MethodAllow(['GET']),
@@ -117,7 +118,7 @@ class OfficesApi(rest.RestyView):
         for office in BranchOffice.objects.all():
             data = {
                        'id': office.id,
-                       'office_name': office.FIO,
+                       'office_name': office.office_name,
                        'address': office.address,
                        'telephone': office.telephone
                    },
@@ -128,7 +129,7 @@ class OfficesApi(rest.RestyView):
         }, safe=False)
 
     @rest.resty(
-        url='get_by_pk',
+        url='office_by_pk/<int:pk>',
         name='get-office-pk',
         plugins=[
             plugins.MethodAllow(['GET']),
@@ -151,6 +152,56 @@ class OfficesApi(rest.RestyView):
         })
 
 
+class ServiceSignupApi(rest.RestyView):
+    @rest.resty(
+        url='set_signup',
+        name='set-signup',
+        plugins=[
+            plugins.MethodAllow(['POST']),
+            plugins.FormValidator(ServiceSignupForm)
+        ],
+        csrf_exempt=True
+    )
+    def set(self, request: WSGIRequest, form: ServiceSignupForm):
+        note = form.save()
+        return rest.RestyResponse({
+            'id':  note.id,
+            'FIO': note.FIO,
+            'service': note.service.name,
+            'time': note.time,
+            'master': note.master.FIO,
+            'branch_office': note.branch_office.address
+        })
+
+    @rest.resty(
+        url='signup_by_pk/<uuid:pk>',
+        name='get-signup-bu-pk',
+        plugins=[
+            plugins.MethodAllow(['GET']),
+        ],
+        csrf_exempt=True
+    )
+    def get_by_pk(self, request: WSGIRequest, pk: uuid4):
+        try:
+            note = ServiceSignup.objects.get(id=pk)
+        except ServiceSignup.DoesNotExist:
+            return rest.RestyResponse(
+                {'error': "Doesn't exist"},
+                status=404
+            )
+        return rest.RestyResponse({
+            'id':  note.id,
+            'FIO': note.FIO,
+            'service': note.service.name,
+            'time': note.time,
+            'master': note.master.FIO,
+            'branch_office': note.branch_office.address
+        })
+
+
 urlpatterns = [
     path('services/', ServicesApi(name='services').urls),
+    path('personal/', PersonalApi(name='personal').urls),
+    path('offices/', OfficesApi(name='offices').urls),
+    path('signup/', ServiceSignupApi(name='signup').urls),
 ]
