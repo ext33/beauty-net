@@ -18,17 +18,41 @@ class ServicesApi(rest.RestyView):
         services = []
         for service in Services.objects.all():
             data = {
-                        'id': service.id,
-                        'name': service.name,
-                        'duration': service.duration,
-                        'price': service.price,
-                        'master': service.master.FIO
-                    },
+                       'id': service.id,
+                       'name': service.name,
+                       'duration': service.duration,
+                       'price': service.price,
+                       'master': service.master.FIO
+                   },
             services.append(data)
         services = paginator(services)
         return rest.RestyResponse({
             'services': services
         }, safe=False)
+
+    @rest.resty(
+        url='get_by_pk',
+        name='get-service-pk',
+        plugins=[
+            plugins.MethodAllow(['GET']),
+        ],
+        csrf_exempt=True,
+    )
+    def get_by_pk(self, request: WSGIRequest, pk: int):
+        try:
+            service = Services.objects.get(pk=pk)
+        except Services.DoesNotExist:
+            return rest.RestyResponse(
+                {'error': "Doesn't exist"},
+                status=404
+            )
+        return rest.RestyResponse({
+            'id': service.id,
+            'name': service.name,
+            'duration': service.duration,
+            'price': service.price,
+            'master': service.master.FIO
+        })
 
 
 class PersonalApi(rest.RestyView):
@@ -55,6 +79,28 @@ class PersonalApi(rest.RestyView):
             'personals': personal
         }, safe=False)
 
+    @rest.resty(
+        url='get_by_pk',
+        name='get-personal-pk',
+        plugins=[
+            plugins.MethodAllow(['GET']),
+        ],
+        csrf_exempt=True,
+    )
+    def get_by_pk(self, request: WSGIRequest, pk: int):
+        try:
+            personal = Personal.objects.get(pk=pk)
+        except Personal.DoesNotExist:
+            return rest.RestyResponse(
+                {'error': "Doesn't exist"},
+                status=404
+            )
+        return rest.RestyResponse({
+            'id': personal.id,
+            'FIO': personal.FIO,
+            'branch_office': personal.branch_office
+        })
+
 
 class OfficesApi(rest.RestyView):
     @rest.resty(
@@ -80,6 +126,29 @@ class OfficesApi(rest.RestyView):
         return rest.RestyResponse({
             'offices': offices
         }, safe=False)
+
+    @rest.resty(
+        url='get_by_pk',
+        name='get-office-pk',
+        plugins=[
+            plugins.MethodAllow(['GET']),
+        ],
+        csrf_exempt=True,
+    )
+    def get_by_pk(self, request: WSGIRequest, pk: int):
+        try:
+            office = BranchOffice.objects.get(pk=pk)
+        except Personal.DoesNotExist:
+            return rest.RestyResponse(
+                {'error': "Doesn't exist"},
+                status=404
+            )
+        return rest.RestyResponse({
+            'id': office.id,
+            'office_name': office.office_name,
+            'address': office.address,
+            'telephone': office.telephone
+        })
 
 
 urlpatterns = [
