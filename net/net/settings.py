@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'netWeb.apps.NetwebConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
