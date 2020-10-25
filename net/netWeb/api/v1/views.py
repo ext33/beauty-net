@@ -163,25 +163,62 @@ class ServiceSignupApi(rest.RestyView):
         csrf_exempt=True
     )
     def set(self, request: WSGIRequest, form: ServiceSignupForm):
-        note = form.save()
-        return rest.RestyResponse({
-            'id':  note.id,
-            'FIO': note.FIO,
-            'service': note.service.name,
-            'time': note.time,
-            'master': note.master.FIO,
-            'branch_office': note.branch_office.address
-        })
+        if form.is_valid():
+            note = form.save()
+            return rest.RestyResponse({
+                'id':  note.id,
+                'FIO': note.FIO,
+                'service': note.service.name,
+                'time': note.time,
+                'master': note.master.FIO,
+                'branch_office': note.branch_office.address
+            })
+        else:
+            return rest.RestyResponse({
+                'error': 'Invalid data'
+            })
 
     @rest.resty(
-        url='signup_by_pk/<uuid:pk>',
-        name='get-signup-bu-pk',
+        url='update_signup/<pk>',
+        name='update-signup',
+        plugins=[
+            plugins.MethodAllow(['POST']),
+            plugins.FormValidator(ServiceSignupForm)
+        ],
+        csrf_exempt=True
+    )
+    def update(self, request: WSGIRequest, pk, form: ServiceSignupForm):
+        try:
+            new_note = ServiceSignup.objects.get(id=pk)
+        except ServiceSignup.DoesNotExist:
+            return rest.RestyResponse(
+                {'error': "Doesn't exist"},
+                status=404
+            )
+        if form.is_valid():
+            new_note = form.update(new_note)
+            return rest.RestyResponse({
+                'id': new_note.id,
+                'FIO': new_note.FIO,
+                'service': new_note.service.name,
+                'time': new_note.time,
+                'master': new_note.master.FIO,
+                'branch_office': new_note.branch_office.address
+            })
+        else:
+            return rest.RestyResponse({
+                'error': 'Invalid data'
+            })
+
+    @rest.resty(
+        url='signup_by_pk/<pk>',
+        name='get-signup-by-pk',
         plugins=[
             plugins.MethodAllow(['GET']),
         ],
         csrf_exempt=True
     )
-    def get_by_pk(self, request: WSGIRequest, pk: uuid4):
+    def get_by_pk(self, request: WSGIRequest, pk):
         try:
             note = ServiceSignup.objects.get(id=pk)
         except ServiceSignup.DoesNotExist:

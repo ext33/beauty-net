@@ -11,3 +11,12 @@ class ServiceSignupForm(forms.ModelForm):
         super(ServiceSignupForm, self).__init__(*args, **kwargs)
         for key in self.fields:
             self.fields[key].required = True
+
+    def update(self, instance):
+        instance.FIO = self.cleaned_data['FIO']
+        instance.service = self.cleaned_data['service']
+        instance.time = self.cleaned_data['time']
+        instance.master = self.cleaned_data['master']
+        instance.branch_office = self.cleaned_data['branch_office']
+        instance.save(update_fields=['FIO', 'service', 'time', 'master', 'branch_office'])
+        return instance
