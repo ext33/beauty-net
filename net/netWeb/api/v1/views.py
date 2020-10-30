@@ -188,14 +188,14 @@ class ServiceSignupApi(rest.RestyView):
         csrf_exempt=True
     )
     def update(self, request: WSGIRequest, pk, form: ServiceSignupForm):
-        try:
-            new_note = ServiceSignup.objects.get(id=pk)
-        except ServiceSignup.DoesNotExist:
-            return rest.RestyResponse(
-                {'error': "Doesn't exist"},
-                status=404
-            )
         if form.is_valid():
+            try:
+                new_note = ServiceSignup.objects.get(id=pk)
+            except ServiceSignup.DoesNotExist:
+                return rest.RestyResponse(
+                    {'error': "Doesn't exist"},
+                    status=404
+                )
             new_note = form.update(new_note)
             return rest.RestyResponse({
                 'id': new_note.id,
