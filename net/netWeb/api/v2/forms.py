@@ -1,5 +1,8 @@
 from django import forms
+from django.http import Http404
 from django.shortcuts import get_object_or_404
+from rest_framework.response import Response
+
 from netWeb.models import ServiceSignup
 
 
@@ -23,3 +26,5 @@ class ServiceSignupForm(forms.ModelForm):
             instance.branch_office = self.cleaned_data['branch_office']
             instance.save(update_fields=['FIO', 'service', 'time', 'master', 'branch_office'])
             return instance
+        else:
+            raise Http404
