@@ -23,7 +23,8 @@ footer{
   color: #F7F7F7;
   font-weight: lighter;
   font-size: 18px;
-  margin-top: 60px;
+  padding-top: 60px;
+  padding-bottom: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;

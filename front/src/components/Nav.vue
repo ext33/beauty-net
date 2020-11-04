@@ -20,7 +20,7 @@ name: "Nav"
 
 <style scoped>
 nav{
-  margin-top: 46px;
+  padding-top: 46px;
   display: flex;
   justify-content: space-between;
   align-items: center;
