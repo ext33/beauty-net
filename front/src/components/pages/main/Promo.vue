@@ -1,11 +1,11 @@
 <template>
-  <div class="main-comp">
-    <p class="m-main-text">
+  <div class="main-comp container">
+    <h1 class="m-main-text">
       САЛОН КРАСОТЫ <br> BEAUTY NET
-    </p>
-    <p class="m-second-text">
+    </h1>
+    <h3 class="m-second-text">
       для записи выберите ближайший филиал
-    </p>
+    </h3>
     <button class="m-button">
       записаться
     </button>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-name: "MainComponent"
+name: "Promo"
 }
 </script>
 

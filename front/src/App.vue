@@ -19,7 +19,7 @@ export default {
   padding-right: 10%;
   padding-left: 10%;
 }
-body {
+body{
   background-color: #1E2327;
   margin: 0;
 }

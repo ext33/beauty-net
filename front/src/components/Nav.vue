@@ -6,9 +6,9 @@
         <span class="text2">NET</span>
       </p>
     </div>
-    <div class="menu">
+    <button class="menu">
       <font-awesome-icon icon="bars" style="height: 45px; width: 44px; color: #F7F7F7" />
-    </div>
+    </button>
   </nav>
 </template>
 
@@ -25,7 +25,6 @@ nav{
   justify-content: space-between;
   align-items: center;
   color: #F7F7F7;
-
 }
 .logo{
   width: 162px;
@@ -51,5 +50,9 @@ nav{
   display: flex;
   align-items: center;
   justify-content: center;
+  background: none;
+  border: 0;
+  text-decoration: none;
 }
+
 </style>
