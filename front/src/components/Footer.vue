@@ -30,6 +30,7 @@ footer{
   align-items: center;
   height: 90px;
   flex-wrap: wrap;
+  text-align: center;
 }
 .left-text{
   height: 40px;

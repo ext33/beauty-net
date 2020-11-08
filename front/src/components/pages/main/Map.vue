@@ -5,7 +5,6 @@
                style="height: 800px; width: 100%"
                :behaviors="['ruler']"
                :controls="['trafficControl', 'searchControl', 'zoomControl', 'routeButtonControl']"
-
    >
 
    </yandex-map>

@@ -37,13 +37,4 @@ name: "Promo"
   font-size: 18px;
   text-align: center;
 }
-.m-button{
-  border: 0;
-  border-radius: 12px;
-  padding: 10px 22px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #F7F7F7;
-  background-color: #5F8CAB;
-}
 </style>

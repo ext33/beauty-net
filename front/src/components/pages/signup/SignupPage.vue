@@ -1,13 +1,18 @@
 <template>
   <div id="signup-page">
     <Nav/>
+      <SignupContainer/>
     <Footer/>
   </div>
 </template>
 
 <script>
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import SignupContainer from "@/components/pages/signup/SignupContainer";
 export default {
-name: "SignupPage"
+name: "SignupPage",
+  components: {SignupContainer, Footer, Nav}
 }
 </script>
 
