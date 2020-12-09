@@ -9,10 +9,10 @@
 <script>
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import SignupContainer from "@/components/pages/signup/SignupContainer";
+import SignupContainer from "@/components/SignupContainer";
 export default {
 name: "SignupPage",
-  components: {SignupContainer, Footer, Nav}
+  components: {SignupContainer, Footer, Nav},
 }
 </script>
 

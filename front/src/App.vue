@@ -5,10 +5,10 @@
 </template>
 
 <script>
-// import MainPage from "@/components/pages/main/MainPage";
+
 import SignupPage from "@/components/pages/signup/SignupPage";
 export default {
-  components: {SignupPage}
+  components: {SignupPage, }
 }
 </script>
 
@@ -17,6 +17,7 @@ body{
   background-color: #1E2327;
   margin: 0;
 }
+
 #app{
   font-family: Montserrat, sans-serif;
 }
@@ -24,7 +25,7 @@ body{
   padding-right: 10%;
   padding-left: 10%;
 }
-.signup-container{
+.l-container{
   height: 70vh;
   display: flex;
   justify-content: center;
@@ -32,6 +33,7 @@ body{
   flex-direction: column;
   color: #F7F7F7;
   text-align: center;
+  align-content: center;
 }
 .m-button{
   border: 0;
@@ -52,5 +54,12 @@ body{
   border-radius: 30px;
   background-color: #3E454D;
   padding: 80px 0;
+}
+a{
+  text-decoration: none;
+}
+.vs-input{
+  width: 100% !important;
+  padding: 10px 20px !important;
 }
 </style>

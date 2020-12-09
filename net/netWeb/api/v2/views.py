@@ -51,9 +51,12 @@ class ServiceSignupViewSet(viewsets.ViewSet):
     @staticmethod
     def create(request):
         form = ServiceSignupForm(request.POST)
-        signup = form.save()
-        serializer = ServiceSignupSerializer(signup)
-        return Response(serializer.data)
+        if form.is_valid():
+            signup = form.save()
+            serializer = ServiceSignupSerializer(signup)
+            return Response(serializer.data)
+        else:
+            return Response({'error': 'invalid'})
 
     @staticmethod
     def update(request, pk=None):

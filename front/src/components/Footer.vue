@@ -5,9 +5,9 @@
       <p class="time">С 10:00 ДО 22:00</p>
     </div>
     <div class="right-text">
-      <a class="link">О НАС</a>
-      <a class="link">УСЛУГИ</a>
-      <a class="link">КОНТАКТЫ</a>
+      <a href="" class="link">О НАС</a>
+      <a href="" class="link">УСЛУГИ</a>
+      <a href="" class="link">КОНТАКТЫ</a>
     </div>
   </footer>
 </template>
@@ -44,5 +44,6 @@ footer{
 }
 .link{
   margin-left: 20px;
+  color: #F7F7F7;
 }
 </style>

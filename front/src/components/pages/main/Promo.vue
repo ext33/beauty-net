@@ -6,9 +6,9 @@
     <h3 class="m-second-text">
       для записи выберите ближайший филиал
     </h3>
-    <button class="m-button">
+    <a href="" class="m-button">
       записаться
-    </button>
+    </a>
   </div>
 </template>
 

@@ -1,20 +1,65 @@
 <template>
   <nav class="container">
     <div class="logo">
-      <p class="text-logo">
+      <a href="" class="text-logo">
         <span class="text1">BEAUTY</span><br>
         <span class="text2">NET</span>
-      </p>
+      </a>
     </div>
-    <button class="menu">
+    <vs-button @click="activeSidebar = !activeSidebar" flat icon>
       <font-awesome-icon icon="bars" style="height: 45px; width: 44px; color: #F7F7F7" />
-    </button>
+    </vs-button>
+    <vs-sidebar
+        absolute
+        right
+        background="primary"
+        text-white
+        v-model="active"
+        :open.sync="activeSidebar"
+    >
+      <template #logo>
+        <!-- ...img logo -->
+      </template>
+      <vs-sidebar-item id="home">
+        <template #icon>
+          <i class='bx bx-home'></i>
+        </template>
+        Главная
+      </vs-sidebar-item>
+      <vs-sidebar-item id="info">
+        <template #icon>
+          <i class='bx bx-home'></i>
+        </template>
+        Услуги
+      </vs-sidebar-item>
+      <vs-sidebar-item id="signup">
+        <template #icon>
+          <i class='bx bx-home'></i>
+        </template>
+        Записаться
+      </vs-sidebar-item>
+      <vs-sidebar-item id="contacts">
+        <template #icon>
+          <i class='bx bx-home'></i>
+        </template>
+        Контакты
+      </vs-sidebar-item>
+      <vs-sidebar-item id="info">
+        <template #icon>
+          <i class='bx bx-home'></i>
+        </template>
+        О нас
+      </vs-sidebar-item>
+    </vs-sidebar>
   </nav>
 </template>
 
 <script>
 export default {
-name: "Nav"
+name: "Nav",
+  data:() => ({
+    activeSidebar: false
+  })
 }
 </script>
 
@@ -37,6 +82,7 @@ nav{
   font-style: normal;
   font-size: 32px;
   line-height: 32px;
+  color: #F7F7F7;
 }
 .text1{
   font-weight: bold;
@@ -44,15 +90,7 @@ nav{
 .text2{
   font-weight: lighter;
 }
-.menu{
-  width: 45px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: 0;
-  text-decoration: none;
+.vs-sidebar-content{
+  border-radius: 0 !important;
 }
-
 </style>
