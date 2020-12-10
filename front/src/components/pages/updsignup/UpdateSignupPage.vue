@@ -1,13 +1,18 @@
 <template>
   <div id="update-signup-page">
-    <Nav/>
-    <Footer/>
+    <SignupContainer :title="title" :id="id"/>
   </div>
 </template>
 
 <script>
+import SignupContainer from "@/components/SignupContainer";
 export default {
-name: "UpdateSignupPage"
+name: "UpdateSignupPage",
+  props: ['id'],
+  components: {SignupContainer},
+  data:() => ({
+    title: 'ЗАПИСЬ №',
+  }),
 }
 </script>
 

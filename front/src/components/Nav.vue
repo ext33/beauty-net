@@ -1,11 +1,11 @@
 <template>
   <nav class="container">
+    <router-link to="/" class="text-logo">
     <div class="logo">
-      <a href="" class="text-logo">
-        <span class="text1">BEAUTY</span><br>
+        <span class="text1">BEAUTY</span>
         <span class="text2">NET</span>
-      </a>
     </div>
+    </router-link>
     <vs-button @click="activeSidebar = !activeSidebar" flat icon>
       <font-awesome-icon icon="bars" style="height: 45px; width: 44px; color: #F7F7F7" />
     </vs-button>
@@ -14,30 +14,39 @@
         right
         background="primary"
         text-white
-        v-model="active"
+        square=true
         :open.sync="activeSidebar"
     >
       <template #logo>
-        <!-- ...img logo -->
+        <div class="logo">
+          <router-link to="/" class="text-logo">
+            <span class="text1">BEAUTY</span><br>
+            <span class="text2">NET</span>
+          </router-link>
+        </div>
       </template>
-      <vs-sidebar-item id="home">
-        <template #icon>
-          <i class='bx bx-home'></i>
-        </template>
-        Главная
-      </vs-sidebar-item>
+      <router-link to="/">
+        <vs-sidebar-item id="home">
+          <template #icon>
+            <i class='bx bx-home'></i>
+          </template>
+          Главная
+        </vs-sidebar-item>
+      </router-link>
       <vs-sidebar-item id="info">
         <template #icon>
           <i class='bx bx-home'></i>
         </template>
         Услуги
       </vs-sidebar-item>
-      <vs-sidebar-item id="signup">
-        <template #icon>
-          <i class='bx bx-home'></i>
-        </template>
-        Записаться
-      </vs-sidebar-item>
+      <router-link to="/Signup">
+        <vs-sidebar-item id="signup">
+          <template #icon>
+            <i class='bx bx-home'></i>
+          </template>
+          Записаться
+        </vs-sidebar-item>
+      </router-link>
       <vs-sidebar-item id="contacts">
         <template #icon>
           <i class='bx bx-home'></i>
@@ -73,12 +82,13 @@ nav{
 }
 .logo{
   width: 162px;
-  height: 64px;
+  height: 70px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 .text-logo{
   margin: 0;
+  padding: 0;
   font-style: normal;
   font-size: 32px;
   line-height: 32px;
@@ -89,8 +99,5 @@ nav{
 }
 .text2{
   font-weight: lighter;
-}
-.vs-sidebar-content{
-  border-radius: 0 !important;
 }
 </style>

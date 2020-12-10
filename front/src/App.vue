@@ -1,14 +1,16 @@
 <template>
   <div id="app">
-    <SignupPage/>
+    <Nav/>
+    <router-view/>
+    <Footer/>
   </div>
 </template>
 
 <script>
-
-import SignupPage from "@/components/pages/signup/SignupPage";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 export default {
-  components: {SignupPage, }
+  components: {Footer, Nav}
 }
 </script>
 
@@ -56,7 +58,8 @@ body{
   padding: 80px 0;
 }
 a{
-  text-decoration: none;
+  text-decoration: none !important;
+  color: #F7F7F7;
 }
 .vs-input{
   width: 100% !important;

@@ -1,7 +1,7 @@
 <template>
 <div id="View-Container" class="l-container container">
   <h1>
-    ВАША ЗАПИСЬ №
+    ВАША ЗАПИСЬ №{{id}}
   </h1>
   <div class="form-area">
     <div class="info-cont">
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="btn-cont">
-      <a href="" class="cancel-btn">ОТМЕНИТЬ</a>
+      <router-link to="" class="cancel-btn">ОТМЕНИТЬ</router-link>
     </div>
   </div>
 </div>
@@ -34,7 +34,9 @@
 
 <script>
 export default {
-name: "ViewContainer"
+name: "ViewContainer",
+  props: ['id'],
+
 }
 </script>
 

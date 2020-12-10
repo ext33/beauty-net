@@ -6,9 +6,9 @@
     <h3 class="m-second-text">
       для записи выберите ближайший филиал
     </h3>
-    <a href="" class="m-button">
+    <router-link to="/Signup" class="m-button">
       записаться
-    </a>
+    </router-link>
   </div>
 </template>
 
@@ -26,7 +26,7 @@ name: "Promo"
   flex-wrap: wrap;
   flex-direction: column;
   color: #F7F7F7;
-  height: calc(100vh - 18vh);
+  height: 100vh;
 }
 .m-main-text{
   text-align: center;

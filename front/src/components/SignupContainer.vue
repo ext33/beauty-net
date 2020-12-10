@@ -1,7 +1,7 @@
 <template>
   <div class="l-container container">
     <h1>
-      ЗАПИСЬ НА УСЛУГУ
+      {{title}}{{id}}
     </h1>
     <div class="form-area">
       <form class="signup-form">
@@ -39,10 +39,12 @@
 
 <script>
 export default {
-name: "SignupContainer",
+  props: ['title', 'id'],
+  name: "SignupContainer",
   data:() => ({
     value: '',
-  })
+  }),
+
 }
 </script>
 

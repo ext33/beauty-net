@@ -1,18 +1,15 @@
 <template>
   <div id="view-signup-page">
-    <Nav/>
-    <ViewContainer/>
-    <Footer/>
+    <ViewContainer :id="id"/>
   </div>
 </template>
 
 <script>
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import ViewContainer from "@/components/pages/viewsignup/ViewContainer";
 export default {
   name: "ViewSignupPage",
-  components: {ViewContainer, Footer, Nav}
+  components: {ViewContainer},
+  props: ['id'],
 }
 </script>
 
