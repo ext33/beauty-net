@@ -12,6 +12,7 @@ import SignupPage from "@/components/pages/signup/SignupPage";
 import UpdateSignupPage from "@/components/pages/updsignup/UpdateSignupPage";
 import CancelSignupPage from "@/components/pages/cancelsignup/CancelSignupPage";
 import ViewSignupPage from "@/components/pages/viewsignup/ViewSignupPage";
+import NotFound from "@/components/pages/404/NotFound";
 
 const settings = {
   apiKey: '',
@@ -25,6 +26,7 @@ Vue.use(VueRouter)
 library.add(fas)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
+
 Vue.use(Vuesax, {
   colors:{
     primary:'#3E454D',
@@ -38,6 +40,7 @@ const routes = [
   {path: '/Signup/:id/Update', component: UpdateSignupPage, props: true},
   {path: '/Signup/:id/Cancel', component: CancelSignupPage, props: true},
   {path: '/Signup/:id', component: ViewSignupPage, props: true},
+  {path: '/404', component: NotFound}
 ]
 
 const router = new VueRouter({

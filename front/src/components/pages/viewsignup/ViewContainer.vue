@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="btn-cont">
-      <router-link to="" class="cancel-btn">ОТМЕНИТЬ</router-link>
+      <router-link :to="'/Signup/'+id+'/Cancel'" class="cancel-btn">ОТМЕНИТЬ</router-link>
     </div>
   </div>
 </div>
@@ -36,7 +36,6 @@
 export default {
 name: "ViewContainer",
   props: ['id'],
-
 }
 </script>
 
