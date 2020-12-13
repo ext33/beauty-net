@@ -35,7 +35,7 @@
 <script>
 export default {
 name: "ViewContainer",
-  props: ['id'],
+  props: ['id', 'data'],
 }
 </script>
 

@@ -12,7 +12,8 @@ import SignupPage from "@/components/pages/signup/SignupPage";
 import UpdateSignupPage from "@/components/pages/updsignup/UpdateSignupPage";
 import CancelSignupPage from "@/components/pages/cancelsignup/CancelSignupPage";
 import ViewSignupPage from "@/components/pages/viewsignup/ViewSignupPage";
-import NotFound from "@/components/pages/404/NotFound";
+import NotFound from "@/components/pages/errors/NotFound";
+import AdminPage from "@/components/pages/admin/AdminPage";
 
 const settings = {
   apiKey: '',
@@ -40,7 +41,8 @@ const routes = [
   {path: '/Signup/:id/Update', component: UpdateSignupPage, props: true},
   {path: '/Signup/:id/Cancel', component: CancelSignupPage, props: true},
   {path: '/Signup/:id', component: ViewSignupPage, props: true},
-  {path: '/404', component: NotFound}
+  {path: '/errors', component: NotFound},
+  {path: '/admin', component: AdminPage}
 ]
 
 const router = new VueRouter({

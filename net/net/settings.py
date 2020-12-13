@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 from net.admin_settings import admin_ui_tweaks, admin_settings
+import mimetypes
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = '8z5-2-cpcl@-tu#4q2r54&kpba@1du-%qg8u#d)q)ca!pv4(3o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # for deploy
 # SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -45,12 +46,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'netWeb.apps.NetwebConfig',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -142,6 +145,9 @@ USE_TZ = True
 JAZZMIN_UI_TWEAKS = admin_ui_tweaks
 JAZZMIN_SETTINGS = admin_settings
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+mimetypes.add_type("text/css", ".css", True)
 
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')

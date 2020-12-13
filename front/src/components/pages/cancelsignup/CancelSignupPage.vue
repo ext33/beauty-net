@@ -14,7 +14,7 @@ export default {
   beforeMount() {
     let check = api.id_check(this.$route.params.id)
     if (check===0){
-      this.$router.push({path:'/404'})
+      this.$router.push({path:'/errors'})
     }
   }
 }
