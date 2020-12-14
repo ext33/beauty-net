@@ -7,26 +7,27 @@ const request = axios.create({
 
 
 let api = {
-   get_signup(id) {
+   async get_signup(id) {
        let result
-       let code = 200
-       request.get(url + 'signup-by-pk/' + id
-       ).then(function (response) {
-           result = response.data
-           console.log(result)
-           code = response.status
-           if (code === 404){
-               return 404
-           }
-           else if (code === 200){
-               console.log(result)
-               return result
+       let status_code = 200
+       let response = await request.get(url + 'signup-by-pk/' + id).catch(error => {
+           if (error.response.status === 404){
+               status_code = 404
            }
            else {
-               return 500
+               status_code = 500
            }
        })
-
+       if (status_code === 200){
+           result = response.data
+       }
+       else if (status_code === 404){
+           result = 404
+       }
+       else {
+           result = 500
+       }
+       return result
    },
 
 }

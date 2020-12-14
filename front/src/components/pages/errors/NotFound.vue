@@ -1,7 +1,7 @@
 <template>
   <div id="notFound" class="l-container container">
     <h1 class="text-info">
-      /404/<br><br> Такой страницы не существует
+      /404/<br> Такой страницы не существует
     </h1>
     <router-link to="/" class="m-button m-wd-button">
       Вернуться на главную
@@ -16,5 +16,7 @@ export default {
 </script>
 
 <style scoped>
-
+#notFound{
+  height: 100vh;
+}
 </style>

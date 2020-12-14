@@ -13,15 +13,15 @@
         <div class="title">ФИЛИАЛ</div>
       </div>
       <div class="right-cont">
-        <div class="view-text" id="name"></div>
+        <div class="view-text" id="name">{{data.FIO}}</div>
         <hr>
-        <div class="view-text" id="service"></div>
+        <div class="view-text" id="service">{{data.service}}</div>
         <hr>
-        <div class="view-text" id="date"></div>
+        <div class="view-text" id="date">{{data.time}}</div>
         <hr>
-        <div class="view-text" id="master"></div>
+        <div class="view-text" id="master">{{data.master}}</div>
         <hr>
-        <div class="view-text" id="office"></div>
+        <div class="view-text" id="office">{{data.branch_office}}</div>
         <hr>
       </div>
     </div>

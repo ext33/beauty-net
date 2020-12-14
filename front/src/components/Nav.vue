@@ -14,7 +14,7 @@
         right
         background="primary"
         text-white
-        square=true
+        square='true'
         :open.sync="activeSidebar"
     >
       <template #logo>

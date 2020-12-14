@@ -1,10 +1,12 @@
 <template>
   <div id="main-page">
+    <Nav/>
     <div class="background">
       <Promo/>
     </div>
     <Services/>
     <Map/>
+    <Footer/>
   </div>
 </template>
 
@@ -12,10 +14,12 @@
 import Promo from "@/components/pages/main/Promo";
 import Services from "@/components/pages/main/Services";
 import Map from "@/components/pages/main/Map";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 export default {
   name: "MainPage",
-  components: {Map, Services, Promo},
+  components: {Footer, Nav, Map, Services, Promo},
 }
 </script>
 

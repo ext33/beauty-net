@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework import viewsets
 
@@ -14,8 +15,11 @@ class ServicesViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     def by_pk(self, request, pk=None):
-        service = get_object_or_404(self.queryset, pk=pk)
-        serializer = ServicesSerializer(service)
+        try:
+            service = get_object_or_404(self.queryset, pk=pk)
+            serializer = ServicesSerializer(service)
+        except(ValueError):
+            return Response(status=404)
         return Response(serializer.data)
 
 
@@ -66,6 +70,9 @@ class ServiceSignupViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     def by_pk(self, request, pk=None):
-        signup = get_object_or_404(self.queryset, pk=pk)
-        serializer = ServiceSignupSerializer(signup)
+        try:
+            signup = get_object_or_404(self.queryset, pk=pk)
+            serializer = ServiceSignupSerializer(signup)
+        except(ValidationError):
+            return Response(status=404)
         return Response(serializer.data)

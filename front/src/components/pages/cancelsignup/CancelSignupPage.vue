@@ -1,24 +1,24 @@
 <template>
   <div id="cancel-signup-page">
+    <Nav/>
     <CancelResult :id="id"/>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import CancelResult from "@/components/pages/cancelsignup/CancelResult";
-import api from "@/axios";
+// import api from "@/axios";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 export default {
   name: "CancelSignupPage",
-  components: {CancelResult},
+  components: {Footer, Nav, CancelResult},
   props: ['id'],
-  beforeMount() {
-    let check = api.id_check(this.$route.params.id)
-    if (check===0){
-      this.$router.push({path:'/errors'})
-    }
-  }
+
 }
 </script>
 
 <style scoped>
+
 </style>

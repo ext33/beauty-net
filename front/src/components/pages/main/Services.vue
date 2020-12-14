@@ -1,11 +1,6 @@
 <template>
   <div class="services container">
     <h2 class="services-head">УСЛУГИ</h2>
-    <div class="categories">
-      <Category/>
-      <Category/>
-      <Category/>
-    </div>
     <div class="services-cont">
       <Service/>
       <Service/>
@@ -16,11 +11,10 @@
 </template>
 
 <script>
-import Category from "@/components/pages/main/Category";
 import Service from "@/components/pages/main/Service";
 export default {
 name: "Services",
-  components: {Service, Category}
+  components: {Service}
 }
 </script>
 
