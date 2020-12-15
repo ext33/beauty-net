@@ -4,7 +4,8 @@
     <div class="background">
       <Promo/>
     </div>
-    <Services/>
+    <Loading v-if="loading"/>
+    <Services v-if="data" :data="data"/>
     <Map/>
     <Footer/>
   </div>
@@ -16,10 +17,29 @@ import Services from "@/components/pages/main/Services";
 import Map from "@/components/pages/main/Map";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import api from "@/axios";
+import Loading from "@/components/Loading";
 
 export default {
   name: "MainPage",
-  components: {Footer, Nav, Map, Services, Promo},
+  components: {Footer, Nav, Map, Services, Promo, Loading},
+  data(){
+    return {
+      loading: true,
+      data: null,
+    }
+  },
+  beforeMount() {
+    this.fetchData()
+  },
+  methods: {
+    async fetchData(){
+      this.loading = true
+      let data = await api.list_services()
+      this.data = await api.check_only_error(data)
+      this.loading = false
+    }
+  }
 }
 </script>
 

@@ -1,13 +1,14 @@
 <template>
  <div class="service">
-   <p class="desc">Стрижка машинкой</p>
-   <p class="price">2000</p>
+   <p class="desc">{{ title }}</p>
+   <p class="price">{{ price }}</p>
  </div>
 </template>
 
 <script>
 export default {
-name: "Service"
+name: "Service",
+  props: ['title', 'price']
 }
 </script>
 

@@ -8,7 +8,7 @@
 
 <script>
 import SignupContainer from "@/components/SignupContainer";
-import api from "@/axios";
+// import api from "@/axios";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 export default {
@@ -18,12 +18,7 @@ name: "UpdateSignupPage",
   data:() => ({
     title: 'ЗАПИСЬ №',
   }),
-  beforeMount() {
-    let check = api.id_check(this.$route.params.id)
-    if (check===0){
-      this.$router.push({path:'/errors'})
-    }
-  }
+
 }
 </script>
 

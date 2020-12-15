@@ -1,6 +1,6 @@
 from django.db import models
 from uuid import uuid4
-
+from operator import itemgetter
 
 class BranchOffice(models.Model):
     office_name = models.CharField(
@@ -114,6 +114,54 @@ class Services(models.Model):
         return self.name
 
 
+class SignupTime(models.Model):
+    TIMES = {
+        (1, '10:00'),
+        (2, '10:30'),
+        (3, '11:00'),
+        (4, '11:30'),
+        (5, '12:00'),
+        (6, '12:30'),
+        (7, '13:00'),
+        (8, '13:30'),
+        (9, '14:00'),
+        (10, '14:30'),
+        (11, '15:00'),
+        (12, '15:30'),
+        (13, '16:00'),
+        (14, '16:30'),
+        (15, '17:00'),
+        (16, '17:30'),
+        (17, '18:00'),
+        (18, '18:30'),
+        (19, '19:00'),
+        (20, '19:30'),
+        (21, '20:00'),
+        (22, '20:30'),
+    }
+
+    master = models.ForeignKey(
+        to=Personal,
+        on_delete=models.CASCADE,
+        verbose_name='Мастер'
+    )
+    a_time = models.IntegerField(
+        choices=sorted(TIMES, key=itemgetter(0)),
+        verbose_name='Доступное время'
+    )
+    a_date = models.DateField(
+        null=True,
+        verbose_name='Дата'
+    )
+
+    class Meta:
+        verbose_name = 'Доступные интервалы'
+        verbose_name_plural = 'Доступные интервалы'
+
+    def __str__(self):
+        return str(str(self.master.FIO+' ') + str(self.a_date) + str(f' {self.get_a_time_display()} '))
+
+
 class ServiceSignup(models.Model):
     id = models.UUIDField(
         primary_key=True,
@@ -129,9 +177,10 @@ class ServiceSignup(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Услуга'
     )
-    time = models.DateTimeField(
-        null=True,
-        verbose_name='Время',
+    time = models.ForeignKey(
+        to=SignupTime,
+        on_delete=models.CASCADE,
+        verbose_name='Время записи'
     )
     master = models.ForeignKey(
         to=Personal,

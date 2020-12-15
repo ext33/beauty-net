@@ -2,10 +2,7 @@
   <div class="services container">
     <h2 class="services-head">УСЛУГИ</h2>
     <div class="services-cont">
-      <Service/>
-      <Service/>
-      <Service/>
-      <Service/>
+      <Service v-for="item in data" :key=item.id :title=item.name :price=item.price />
     </div>
   </div>
 </template>
@@ -13,8 +10,9 @@
 <script>
 import Service from "@/components/pages/main/Service";
 export default {
-name: "Services",
-  components: {Service}
+  name: "Services",
+  components: {Service},
+  props: ['data'],
 }
 </script>
 

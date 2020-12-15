@@ -27,19 +27,11 @@ export default {
     this.fetchData()
   },
   methods: {
-    async fetchData(){
+    async fetchData() {
       this.loading = true
       let data = await api.get_signup(this.$route.params.id)
-      if (data===404){
-        await this.$router.push({path:'/404'})
-      }
-      else if (data===500){
-        await this.$router.push({path:'/error'})
-      }
-      else {
-        this.loading = false
-        this.data = data
-      }
+      this.data = await api.check_error_404(data)
+      this.loading = false
     }
   }
 }

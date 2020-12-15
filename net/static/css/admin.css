@@ -33,7 +33,7 @@
 .img-circle{
     background-color: #fff;
 }
-.image img{
+.image {
     display: none;
 }
 div.image::before{

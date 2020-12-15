@@ -30,3 +30,9 @@ class Services(admin.ModelAdmin):
 class SignUp(admin.ModelAdmin):
     list_display = ('service', 'time', 'master', 'branch_office', 'signup_time')
     list_filter = ('service', 'time', 'master', 'branch_office', 'signup_time')
+
+
+@admin.register(SignupTime)
+class SignupTime(admin.ModelAdmin):
+    list_display = ('master', 'a_time', 'a_date')
+    list_filter = ('master', 'a_date')
