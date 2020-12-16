@@ -11,14 +11,14 @@
               {{ item.name }}
             </vs-option>
           </vs-select>
-        <vs-select placeholder="ВЫБЕРИТЕ МАСТЕРА" v-model="master" class="input-main">
+        <vs-select placeholder="ВЫБЕРИТЕ МАСТЕРА" v-model="master" v-on:change="getTimes(master)" class="input-main">
           <vs-option v-for="item in personal_data" :label=item.FIO :key=item.id :value=item.id>
             {{ item.FIO }}
           </vs-option>
         </vs-select>
-        <vs-select placeholder="ВЫБЕРИТЕ ВРЕМЯ" v-model="datetime" class="input-main">
-          <vs-option label="Vuesax" value="1">
-            Vuesax
+        <vs-select placeholder="ВЫБЕРИТЕ ВРЕМЯ" v-model="datetime" class="input-main" :disabled="times_disabled">
+          <vs-option v-for="item in signup_times" :label=item.time :key=item.id :value=item.id>
+            {{ item.time }}
           </vs-option>
         </vs-select>
         <vs-select placeholder="ВЫБЕРИТЕ ФИЛИАЛ" v-model="office" class="input-main">
@@ -27,7 +27,7 @@
           </vs-option>
         </vs-select>
         <button v-on:click="setSignup($event)" class="input-main input-submit">Отправить</button>
-        <div :v-if=error class="error">
+        <div v-if=error class="error">
           {{ error }}
         </div>
       </form>
@@ -54,6 +54,8 @@ export default {
     services_data: null,
     personal_data: null,
     offices_data: null,
+    signup_times: null,
+    times_disabled: true,
     error: null,
   }),
   beforeMount() {
@@ -71,8 +73,15 @@ export default {
 
       let personal_data = await api.list_personal()
       this.personal_data = await api.check_only_error(personal_data)
-
+      console.log(this.personal_data)
       this.loading = false
+    },
+
+    async getTimes(master) {
+      let signup_times = await api.list_times(master)
+      this.signup_times = await api.check_only_error(signup_times)
+      console.log(this.signup_times[0].time)
+      this.times_disabled = false
     },
 
     async setSignup(event) {
@@ -81,6 +90,7 @@ export default {
       }
       if(this.name && this.service && this.office && this.master && this.datetime) {
         this.error = null
+        console.log(this.name,this.service,this.office,this.master,this.datetime)
         let request = await api.set_signup(this.name,this.service,this.office,this.master,this.datetime)
         console.log(request)
       }
@@ -114,6 +124,7 @@ export default {
   width: 60%;
   margin-top: 20px;
 }
+
 h1{
   padding-top: 30px;
 }

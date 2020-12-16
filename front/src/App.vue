@@ -62,4 +62,7 @@ a{
   width: 100% !important;
   padding: 10px 20px !important;
 }
+.vs-select__input {
+  padding: 8px 13px !important;
+}
 </style>

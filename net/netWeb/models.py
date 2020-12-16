@@ -1,6 +1,8 @@
 from django.db import models
 from uuid import uuid4
 from operator import itemgetter
+from smart_selects.db_fields import ChainedForeignKey, GroupedForeignKey
+
 
 class BranchOffice(models.Model):
     office_name = models.CharField(
@@ -159,7 +161,7 @@ class SignupTime(models.Model):
         verbose_name_plural = 'Доступные интервалы'
 
     def __str__(self):
-        return str(str(self.master.FIO+' ') + str(self.a_date) + str(f' {self.get_a_time_display()} '))
+        return str(str(self.a_date) + str(f' {self.get_a_time_display()}'))
 
 
 class ServiceSignup(models.Model):
@@ -177,15 +179,15 @@ class ServiceSignup(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Услуга'
     )
-    time = models.ForeignKey(
-        to=SignupTime,
-        on_delete=models.CASCADE,
-        verbose_name='Время записи'
-    )
     master = models.ForeignKey(
         to=Personal,
         on_delete=models.CASCADE,
         verbose_name='Мастер'
+    )
+    time = GroupedForeignKey(
+        SignupTime,
+        group_field='master',
+        verbose_name='Время записи',
     )
     branch_office = models.ForeignKey(
         to=BranchOffice,

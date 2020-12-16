@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'netWeb.apps.NetwebConfig',
     'rest_framework',
     'corsheaders',
+    'smart_selects',
 ]
 
 MIDDLEWARE = [

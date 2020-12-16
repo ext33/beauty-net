@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.shortcuts import get_list_or_404
 from rest_framework.response import Response
 from rest_framework import viewsets
 
@@ -69,10 +70,26 @@ class ServiceSignupViewSet(viewsets.ViewSet):
         serializer = ServiceSignupSerializer(new_signup)
         return Response(serializer.data)
 
+    @staticmethod
+    def cancel(request, pk=None):
+        pass
+
     def by_pk(self, request, pk=None):
         try:
             signup = get_object_or_404(self.queryset, pk=pk)
-            serializer = ServiceSignupSerializer(signup)
+            serializer = ServiceSignupSerializerDisplay(signup, context={'request': request})
+        except(ValidationError):
+            return Response(status=404)
+        return Response(serializer.data)
+
+
+class SignupTimeViewSet(viewsets.ViewSet):
+    queryset = SignupTime.objects.all()
+
+    def by_master(self, request, pk=None):
+        try:
+            signup_time = get_list_or_404(self.queryset, master=pk)
+            serializer = SignupTimeSerializer(signup_time, many=True)
         except(ValidationError):
             return Response(status=404)
         return Response(serializer.data)

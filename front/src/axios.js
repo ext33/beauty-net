@@ -97,7 +97,6 @@ let api = {
        else {
            result = 500
        }
-       console.log(result)
        return result
    },
 
@@ -124,15 +123,45 @@ let api = {
        return result
    },
 
+    async list_times(master_id) {
+        let result
+        let status_code = 200
+        let response = await request.get(url + 'signup-time/' + master_id).catch(error => {
+            if (error.response.status === 404){
+                status_code = 404
+            }
+            else {
+                status_code = 500
+            }
+        })
+        if (status_code === 200){
+            result = response.data
+        }
+        else if (status_code === 404){
+            result = 404
+        }
+        else {
+            result = 500
+        }
+        return result
+    },
+
    async set_signup(name, service, master, datetime, office) {
        let result
        let status_code = 200
-       let response = await request.post(url + 'create-signup', {
-           FIO: name,
-           service: service,
-           master: master,
-           time: datetime,
-           branch_office: office
+
+       let FormData = require('form-data');
+       let data = new FormData();
+       data.append('FIO', name);
+       data.append('service', service);
+       data.append('time', datetime);
+       data.append('master', master);
+       data.append('branch_office', office);
+
+       let response = await request.post(url + 'create-signup/',data ,{
+           headers: {
+               ...data.getHeaders
+           }
        }).catch(error => {
            if (error.response.status === 404){
                status_code = 404
