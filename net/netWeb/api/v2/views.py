@@ -32,8 +32,11 @@ class PersonalViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     def by_pk(self, request, pk=None):
-        service = get_object_or_404(self.queryset, pk=pk)
-        serializer = PersonalSerializer(service)
+        try:
+            service = get_object_or_404(self.queryset, pk=pk)
+            serializer = PersonalSerializer(service)
+        except(ValidationError):
+            return Response(status=404)
         return Response(serializer.data)
 
 
@@ -45,8 +48,11 @@ class BranchOfficesViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     def by_pk(self, request, pk=None):
-        service = get_object_or_404(self.queryset, pk=pk)
-        serializer = BranchOfficesSerializer(service)
+        try:
+            service = get_object_or_404(self.queryset, pk=pk)
+            serializer = BranchOfficesSerializer(service)
+        except(ValidationError):
+            return Response(status=404)
         return Response(serializer.data)
 
 
@@ -61,7 +67,7 @@ class ServiceSignupViewSet(viewsets.ViewSet):
             serializer = ServiceSignupSerializer(signup)
             return Response(serializer.data)
         else:
-            return Response({'error': 'invalid'})
+            return Response({'result': 'error', 'error': 'invalid form data'})
 
     @staticmethod
     def update(request, pk=None):
@@ -70,9 +76,13 @@ class ServiceSignupViewSet(viewsets.ViewSet):
         serializer = ServiceSignupSerializer(new_signup)
         return Response(serializer.data)
 
-    @staticmethod
-    def cancel(request, pk=None):
-        pass
+    def cancel(self, request, pk=None):
+        try:
+            signup = get_object_or_404(self.queryset, pk=pk)
+            signup.delete()
+        except(ValidationError):
+            return Response(status=404)
+        return Response({'result': 'success'})
 
     def by_pk(self, request, pk=None):
         try:

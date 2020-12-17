@@ -23,15 +23,23 @@
 </template>
 
 <script>
+import api from "@/axios";
+
 export default {
   name: "CancelResult",
   props: ['id'],
   methods:{
-    load(id){
+    async load(id){
       let check = 0
       if(id !== undefined){
-        // server check
-        check = 1
+        let request = api.cancel_signup(id)
+        if (request === 404) {
+          await this.$router.push({path: '/error'})
+        } else if (request === 500) {
+          await this.$router.push({path: '/error'})
+        } else {
+          check = 1
+        }
       }
       let style = document.createElement('style');
       if(check===1){

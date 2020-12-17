@@ -36,7 +36,7 @@ export default {
     async fetchData(){
       this.loading = true
       let data = await api.list_services()
-      this.data = await api.check_only_error(data)
+      this.data = await api.check_only_error(data, this.$router)
       this.loading = false
     }
   }

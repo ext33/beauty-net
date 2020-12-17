@@ -7,24 +7,24 @@ const request = axios.create({
 
 
 let api = {
-    async check_only_error(data) {
+    async check_only_error(data, router) {
         let result
         if (data === 404) {
-            await this.$router.push({path: '/error'})
+            await router.push({path: '/error'})
         } else if (data === 500) {
-            await this.$router.push({path: '/error'})
+            await router.push({path: '/error'})
         } else {
             result = data
         }
         return result
     },
 
-    async check_error_404(data) {
+    async check_error_404(data, router) {
         let result
         if (data === 404) {
-            await this.$router.push({path: '/error'})
+            await router.push({path: '/error'})
         } else if (data === 500) {
-            await this.$router.push({path: '/error'})
+            await router.push({path: '/error'})
         } else {
             result = data
         }
@@ -146,10 +146,32 @@ let api = {
         return result
     },
 
+    async cancel_signup(id) {
+        let result
+        let status_code = 200
+        let response = await request.get(url + 'signup-cancel/' + id).catch(error => {
+            if (error.response.status === 404){
+                status_code = 404
+            }
+            else {
+                status_code = 500
+            }
+        })
+        if (status_code === 200){
+            result = response.data
+        }
+        else if (status_code === 404){
+            result = 404
+        }
+        else {
+            result = 500
+        }
+        return result
+    },
+
    async set_signup(name, service, master, datetime, office) {
        let result
        let status_code = 200
-
        let FormData = require('form-data');
        let data = new FormData();
        data.append('FIO', name);
@@ -182,6 +204,5 @@ let api = {
        return result
    }
 }
-
 
 export default api

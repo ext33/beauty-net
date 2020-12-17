@@ -8,14 +8,12 @@
 
 <script>
 import CancelResult from "@/components/pages/cancelsignup/CancelResult";
-// import api from "@/axios";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 export default {
   name: "CancelSignupPage",
   components: {Footer, Nav, CancelResult},
   props: ['id'],
-
 }
 </script>
 

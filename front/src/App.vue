@@ -65,4 +65,11 @@ a{
 .vs-select__input {
   padding: 8px 13px !important;
 }
+.vs-dialog-content .vs-dialog{
+  --vs-background: 30,32,35;
+  --vs-text: 255,255,255;
+}
+input{
+  color: #3E454D !important;
+}
 </style>

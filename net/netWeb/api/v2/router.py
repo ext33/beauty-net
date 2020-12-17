@@ -13,4 +13,5 @@ urlpatterns = [
     path('update-signup/<pk>', ServiceSignupViewSet.as_view({'post': 'update'}), name='update-signup'),
     path('signup-by-pk/<pk>', ServiceSignupViewSet.as_view({'get': 'by_pk'}), name='signup-by-pk'),
     path('signup-time/<pk>', SignupTimeViewSet.as_view({'get': 'by_master'}), name='signup-time'),
+    path('signup-cancel/<pk>', ServiceSignupViewSet.as_view({'get': 'cancel'}), name='signup-cancel'),
 ]

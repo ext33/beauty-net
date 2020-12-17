@@ -25,9 +25,17 @@
         <hr>
       </div>
     </div>
-    <div class="btn-cont">
-      <router-link :to="'/Signup/'+id+'/Cancel'" class="cancel-btn">ОТМЕНИТЬ</router-link>
-    </div>
+    <button @click="active=!active" class="btn-cont cancel-btn">
+      ОТМЕНИТЬ
+    </button>
+    <vs-dialog prevent-close v-model="active" :blur=true>
+      <div class="modal">
+        <h4>
+          Вы уверены что хотите удалить запись?
+        </h4>
+        <router-link :to="'/Signup/'+id+'/Cancel'" class="cancel-btn">ПОДТВЕРДИТЬ</router-link>
+      </div>
+    </vs-dialog>
   </div>
 </div>
 </template>
@@ -36,6 +44,9 @@
 export default {
 name: "ViewContainer",
   props: ['id', 'data'],
+  data:() => ({
+    active: false,
+  })
 }
 </script>
 
@@ -64,7 +75,7 @@ h1{
   width: 60%;
 }
 .title{
-  padding: 15px;
+  padding: 18px;
 }
 .view-text{
   padding: 14px;
@@ -84,5 +95,17 @@ hr{
   text-decoration: none;
   color: #F7F7F7;
   font-size: 18px;
+  border: none;
+}
+.modal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5%;
+  color: #F7F7F7;
+}
+h4{
+  padding-bottom: 15px;
 }
 </style>

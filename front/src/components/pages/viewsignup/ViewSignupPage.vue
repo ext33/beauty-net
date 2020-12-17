@@ -30,7 +30,7 @@ export default {
     async fetchData() {
       this.loading = true
       let data = await api.get_signup(this.$route.params.id)
-      this.data = await api.check_error_404(data)
+      this.data = await api.check_error_404(data, this.$router)
       this.loading = false
     }
   }

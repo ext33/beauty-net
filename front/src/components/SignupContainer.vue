@@ -4,14 +4,14 @@
       {{title}}{{id}}
     </h1>
     <div class="form-area">
-      <form v-if="personal_data" class="signup-form">
-          <vs-input placeholder="ВВЕДИТЕ ВАШЕ ИМЯ" v-model="name" class="input-main"/>
-          <vs-select placeholder="ВЫБЕРИТЕ УСЛУГУ" v-model="service" class="input-main">
-            <vs-option v-for="item in services_data" :label=item.name :key=item.id :value=item.id>
-              {{ item.name }}
-            </vs-option>
-          </vs-select>
-        <vs-select placeholder="ВЫБЕРИТЕ МАСТЕРА" v-model="master" v-on:change="getTimes(master)" class="input-main">
+      <form v-if="offices_data" class="signup-form">
+        <vs-input placeholder="ВВЕДИТЕ ВАШЕ ИМЯ" v-model="name" class="input-main"/>
+        <vs-select placeholder="ВЫБЕРИТЕ УСЛУГУ" v-model="service" class="input-main">
+          <vs-option v-for="item in services_data" :label=item.name :key=item.id :value=item.id>
+            {{ item.name }}
+          </vs-option>
+        </vs-select>
+        <vs-select placeholder="ВЫБЕРИТЕ МАСТЕРА" v-model="master" class="input-main" v-on:change="getTimes(master)">
           <vs-option v-for="item in personal_data" :label=item.FIO :key=item.id :value=item.id>
             {{ item.FIO }}
           </vs-option>
@@ -66,21 +66,20 @@ export default {
       this.loading = true
 
       let services_data = await api.list_services()
-      this.services_data = await api.check_only_error(services_data)
+      this.services_data = await api.check_only_error(services_data, this.$router)
 
       let offices_data = await api.list_offices()
-      this.offices_data = await api.check_only_error(offices_data)
+      this.offices_data = await api.check_only_error(offices_data, this.$router)
 
       let personal_data = await api.list_personal()
-      this.personal_data = await api.check_only_error(personal_data)
-      console.log(this.personal_data)
+      this.personal_data = await api.check_only_error(personal_data, this.$router)
+      
       this.loading = false
     },
 
     async getTimes(master) {
       let signup_times = await api.list_times(master)
-      this.signup_times = await api.check_only_error(signup_times)
-      console.log(this.signup_times[0].time)
+      this.signup_times = await api.check_only_error(signup_times, this.$router)
       this.times_disabled = false
     },
 
@@ -90,9 +89,14 @@ export default {
       }
       if(this.name && this.service && this.office && this.master && this.datetime) {
         this.error = null
-        console.log(this.name,this.service,this.office,this.master,this.datetime)
         let request = await api.set_signup(this.name,this.service,this.office,this.master,this.datetime)
-        console.log(request)
+        if (request === 404) {
+          await this.$router.push({path: '/error'})
+        } else if (request === 500) {
+          await this.router.push({path: '/error'})
+        } else {
+          await this.$router.push({path: '/Signup/'+request.id})
+        }
       }
       else {
         this.error = 'Заполните все поля'
@@ -124,7 +128,6 @@ export default {
   width: 60%;
   margin-top: 20px;
 }
-
 h1{
   padding-top: 30px;
 }
