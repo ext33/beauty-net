@@ -3,8 +3,8 @@
     <h1>
       {{title}}{{id}}
     </h1>
-    <div class="form-area">
-      <form v-if="offices_data" class="signup-form">
+    <div v-if="personal_data" class="form-area">
+      <form class="signup-form">
         <vs-input placeholder="ВВЕДИТЕ ВАШЕ ИМЯ" v-model="name" class="input-main"/>
         <vs-select placeholder="ВЫБЕРИТЕ УСЛУГУ" v-model="service" class="input-main">
           <vs-option v-for="item in services_data" :label=item.name :key=item.id :value=item.id>
@@ -31,8 +31,8 @@
           {{ error }}
         </div>
       </form>
-      <Loading v-if="loading"/>
     </div>
+    <Loading v-if="loading"/>
   </div>
 </template>
 
@@ -64,16 +64,12 @@ export default {
   methods: {
     async fetchData() {
       this.loading = true
-
       let services_data = await api.list_services()
       this.services_data = await api.check_only_error(services_data, this.$router)
-
       let offices_data = await api.list_offices()
       this.offices_data = await api.check_only_error(offices_data, this.$router)
-
       let personal_data = await api.list_personal()
       this.personal_data = await api.check_only_error(personal_data, this.$router)
-      
       this.loading = false
     },
 
@@ -89,7 +85,7 @@ export default {
       }
       if(this.name && this.service && this.office && this.master && this.datetime) {
         this.error = null
-        let request = await api.set_signup(this.name,this.service,this.office,this.master,this.datetime)
+        let request = await api.set_signup(this.name,this.service,this.master,this.datetime,this.office)
         if (request === 404) {
           await this.$router.push({path: '/error'})
         } else if (request === 500) {
@@ -108,6 +104,7 @@ export default {
 
 <style scoped>
 .signup-form{
+  padding-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,7 +113,7 @@ export default {
 }
 .input-main{
   padding: 10px 0;
-  width: 60%;
+  width: 65%;
   font-size: 18px;
   border-radius: 10px;
   border: 0;
@@ -125,7 +122,6 @@ export default {
 .input-submit{
   color: #F7F7F7;
   background-color: #5F8CAB;
-  width: 60%;
   margin-top: 20px;
 }
 h1{

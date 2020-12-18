@@ -75,7 +75,7 @@ h1{
   width: 60%;
 }
 .title{
-  padding: 18px;
+  padding: 15px;
 }
 .view-text{
   padding: 14px;

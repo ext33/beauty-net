@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition name="fade">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -15,7 +17,12 @@ body{
   background-color: #1E2327;
   margin: 0;
 }
-
+.fade-enter-active{
+  transition: opacity .9s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 #app{
   font-family: Montserrat, sans-serif;
 }
@@ -48,8 +55,9 @@ body{
 }
 .form-area{
   margin-top: 52px;
+  margin-bottom: 0;
   height: 70%;
-  width: 660px;
+  width: 800px;
   border-radius: 30px;
   background-color: #3E454D;
   padding: 80px 0;
@@ -71,5 +79,8 @@ a{
 }
 input{
   color: #3E454D !important;
+}
+.vs-select{
+  font-size: 18px !important;
 }
 </style>

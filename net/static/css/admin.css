@@ -33,8 +33,8 @@
 .img-circle{
     background-color: #fff;
 }
-.image {
-    display: none;
+.user-panel img{
+    display: none !important;
 }
 div.image::before{
     content: url("../logos/user.svg");
