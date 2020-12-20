@@ -18,10 +18,12 @@ body{
   margin: 0;
 }
 .fade-enter-active{
-  transition: opacity .9s;
+  transition: opacity 1s;
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
+
+
 }
 #app{
   font-family: Montserrat, sans-serif;

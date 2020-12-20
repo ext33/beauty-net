@@ -54,10 +54,10 @@ let api = {
        return result
    },
 
-   async list_services() {
+   async services_master(master_id) {
        let result
        let status_code = 200
-       let response = await request.get(url + 'services-list').catch(error => {
+       let response = await request.get(url + 'services-list/' + master_id).catch(error => {
            if (error.response.status === 404){
                status_code = 404
            }
@@ -77,10 +77,33 @@ let api = {
        return result
    },
 
-   async list_personal() {
+   async list_services() {
        let result
        let status_code = 200
-       let response = await request.get(url + 'personal-list').catch(error => {
+       let response = await request.get(url + 'services-list/').catch(error => {
+           if (error.response.status === 404){
+               status_code = 404
+           }
+           else {
+               status_code = 500
+           }
+       })
+       if (status_code === 200){
+           result = response.data
+       }
+       else if (status_code === 404){
+           result = 404
+       }
+       else {
+           result = 500
+       }
+       return result
+   },
+
+   async list_personal(office_id) {
+       let result
+       let status_code = 200
+       let response = await request.get(url + 'personal-list/' + office_id).catch(error => {
            if (error.response.status === 404){
                status_code = 404
            }

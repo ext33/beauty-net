@@ -11,8 +11,13 @@ from netWeb.models import Services, Personal
 class ServicesViewSet(viewsets.ViewSet):
     queryset = Services.objects.all()
 
-    def list(self, request):
+    def list(self, request, ):
         serializer = ServicesSerializer(self.queryset, many=True)
+        return Response(serializer.data)
+
+    def list_pk(self, request, pk=None):
+        service = get_list_or_404(self.queryset, master=pk)
+        serializer = ServicesSerializer(service, many=True)
         return Response(serializer.data)
 
     def by_pk(self, request, pk=None):
@@ -27,8 +32,9 @@ class ServicesViewSet(viewsets.ViewSet):
 class PersonalViewSet(viewsets.ViewSet):
     queryset = Personal.objects.all()
 
-    def list(self, request):
-        serializer = PersonalSerializer(self.queryset, many=True)
+    def list(self, request, pk=None):
+        personal = get_list_or_404(self.queryset, branch_office=pk)
+        serializer = PersonalSerializer(personal, many=True)
         return Response(serializer.data)
 
     def by_pk(self, request, pk=None):
