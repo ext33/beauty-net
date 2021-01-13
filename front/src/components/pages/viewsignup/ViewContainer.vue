@@ -1,7 +1,7 @@
 <template>
 <div id="View-Container" class="l-container container">
   <h1>
-    ВАША ЗАПИСЬ №{{id}}
+    ВАША ЗАПИСЬ №{{id.slice(0,10)}}
   </h1>
   <div class="form-area">
     <div class="info-cont">
@@ -33,7 +33,7 @@
         <h4>
           Вы уверены что хотите удалить запись?
         </h4>
-        <router-link :to="'/Signup/'+id+'/Cancel'" class="cancel-btn">ПОДТВЕРДИТЬ</router-link>
+        <router-link :to="'/Signup/'+id+'/Cancel'" class="cancel-btn">ДА</router-link>
       </div>
     </vs-dialog>
   </div>

@@ -4,7 +4,7 @@
       САЛОН КРАСОТЫ <br> BEAUTY NET
     </h1>
     <h3 class="m-second-text">
-      для записи выберите ближайший филиал
+      запишитесь уже сегодня!
     </h3>
     <router-link to="/Signup" class="m-button">
       записаться

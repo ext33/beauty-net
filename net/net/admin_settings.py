@@ -10,11 +10,11 @@ admin_ui_tweaks = {
 }
 
 admin_settings = {
-    'site_title': 'beauty shop ✩✩✩',
+    'site_title': 'beauty-net',
     'site_logo': None,  # 'logos/logo.svg',
-    'site_header': 'beauty shop ✩✩✩',
-    'welcome_sign': 'login',
-    'copyright': 'beauty shop ✩✩✩',
+    'site_header': 'beauty-net',
+    'welcome_sign': 'Авторизация',
+    'copyright': 'beauty-net',
 
     # Field name on user model that contains avatar image
     'user_avatar': 'logos/user.svg',
