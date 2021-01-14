@@ -3,9 +3,9 @@ from django.shortcuts import get_list_or_404
 from rest_framework.response import Response
 from rest_framework import viewsets
 
-from netWeb.api.v2.forms import *
-from netWeb.api.v2.serializers import *
-from netWeb.models import Services, Personal
+from .forms import *
+from .serializers import *
+from api.models import Services, Personal
 
 
 class ServicesViewSet(viewsets.ViewSet):

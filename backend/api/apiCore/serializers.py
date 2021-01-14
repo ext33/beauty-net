@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from netWeb.models import *
+from api.models import *
 
 
 class ServicesSerializer(serializers.ModelSerializer):

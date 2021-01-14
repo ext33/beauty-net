@@ -2,7 +2,7 @@ from django import forms
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 
-from netWeb.models import ServiceSignup
+from api.models import ServiceSignup
 
 
 class ServiceSignupForm(forms.ModelForm):

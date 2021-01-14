@@ -1,7 +1,7 @@
 from django.db import models
 from uuid import uuid4
 from operator import itemgetter
-from smart_selects.db_fields import ChainedForeignKey, GroupedForeignKey
+from smart_selects.db_fields import GroupedForeignKey
 
 
 class BranchOffice(models.Model):

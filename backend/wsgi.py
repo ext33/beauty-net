@@ -1,5 +1,5 @@
 """
-WSGI config for net project.
+WSGI config for settings project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'net.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.prod')
 
 application = get_wsgi_application()

@@ -13,7 +13,6 @@ import UpdateSignupPage from "@/components/pages/updsignup/UpdateSignupPage";
 import CancelSignupPage from "@/components/pages/cancelsignup/CancelSignupPage";
 import ViewSignupPage from "@/components/pages/viewsignup/ViewSignupPage";
 import NotFound from "@/components/pages/errors/NotFound";
-import AdminPage from "@/components/pages/admin/AdminPage";
 import Error from "@/components/pages/errors/Error";
 
 const settings = {
@@ -42,9 +41,9 @@ const routes = [
   {path: '/Signup/:id/Update', component: UpdateSignupPage, props: true},
   {path: '/Signup/:id/Cancel', component: CancelSignupPage, props: true},
   {path: '/Signup/:id', component: ViewSignupPage, props: true},
+  {path: '/Signup-*', component: NotFound},
   {path: '/404', component: NotFound},
   {path: '/error', component: Error},
-  {path: '/admin', component: AdminPage}
 ]
 
 const router = new VueRouter({
