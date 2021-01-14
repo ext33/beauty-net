@@ -1,7 +1,6 @@
 from django.db import models
 from uuid import uuid4
 from operator import itemgetter
-from smart_selects.db_fields import GroupedForeignKey
 
 
 class BranchOffice(models.Model):
@@ -184,9 +183,9 @@ class ServiceSignup(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Мастер'
     )
-    time = GroupedForeignKey(
-        SignupTime,
-        group_field='master',
+    time = models.ForeignKey(
+        to=SignupTime,
+        on_delete=models.CASCADE,
         verbose_name='Время записи',
     )
     branch_office = models.ForeignKey(
