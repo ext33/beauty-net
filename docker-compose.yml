@@ -24,7 +24,7 @@ services:
          context: .
          dockerfile: dockerfile
       volumes:
-         - ./backend:/srv/www/net/backend
+         - ./:/srv/www/net/
       ports:
          - 8000:8000
       command: "bash entrypoint.sh"

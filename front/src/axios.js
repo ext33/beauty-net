@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const url = 'http://localhost:8000/api/'
+
+// const url = 'http://localhost:8000/api/' //for dev
+const url = 'http://localhost:8080/api/' // for prod
 const request = axios.create({
     baseURL: url
 })

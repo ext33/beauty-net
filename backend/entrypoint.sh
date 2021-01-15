@@ -1,5 +1,5 @@
-python3 manage.py collectstatic --noinput
-python3 manage.py makemigrations
-python3 manage.py migrate
-python3 manage.py createsuperuser --no-input
+python manage.py collectstatic --noinput
+python manage.py makemigrations
+python manage.py flush --no-input
+python manage.py migrate
 uwsgi --http :8000 --module wsgi

@@ -15,4 +15,5 @@ COPY ./backend/entrypoint.sh /srv/www/net/backend/
 
 WORKDIR /srv/www/net/backend
 RUN chmod +x entrypoint.sh
-RUN pip3 install -r pip-dependence
+RUN pip install -r pip-dependence
+
