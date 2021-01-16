@@ -17,8 +17,6 @@ services:
          - ./pgdata/:/var/lib/postgresql/data/pgdata
 
    web:
-      depends_on:
-         - db
       restart: always
       build:
          context: .
@@ -30,6 +28,8 @@ services:
       command: "bash entrypoint.sh"
       env_file:
          - env.conf
+      depends_on:
+         - db
 
    nginx:
       restart: always
