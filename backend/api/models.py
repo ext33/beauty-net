@@ -173,6 +173,10 @@ class ServiceSignup(models.Model):
         max_length=255,
         verbose_name='ФИО клиента'
     )
+    email = models.EmailField(
+        null=True,
+        verbose_name='Email',
+    )
     service = models.ForeignKey(
         to=Services,
         on_delete=models.CASCADE,

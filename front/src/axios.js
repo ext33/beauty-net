@@ -1,8 +1,8 @@
 import axios from "axios";
 
 
-// const url = 'http://localhost:8000/api/' //for dev
-const url = 'http://localhost:8080/api/' // for prod
+const url = 'http://localhost:8000/api/' //for dev
+// const url = 'http://localhost:8080/api/' // for prod
 const request = axios.create({
     baseURL: url
 })
@@ -194,12 +194,13 @@ let api = {
         return result
     },
 
-   async set_signup(name, service, master, datetime, office) {
+   async set_signup(name, email, service, master, datetime, office) {
        let result
        let status_code = 200
        let FormData = require('form-data');
        let data = new FormData();
        data.append('FIO', name);
+       data.append('email', email);
        data.append('service', service);
        data.append('time', datetime);
        data.append('master', master);

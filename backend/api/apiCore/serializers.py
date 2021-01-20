@@ -23,7 +23,7 @@ class BranchOfficesSerializer(serializers.ModelSerializer):
 class ServiceSignupSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServiceSignup
-        fields = ['id', 'FIO', 'service', 'master', 'time', 'branch_office']
+        fields = ['id', 'FIO', 'service', 'email', 'master', 'time', 'branch_office']
 
 
 class ServiceSignupSerializerDisplay(serializers.ModelSerializer):

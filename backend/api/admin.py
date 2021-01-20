@@ -28,7 +28,7 @@ class Services(admin.ModelAdmin):
 
 @admin.register(ServiceSignup)
 class SignUp(admin.ModelAdmin):
-    list_display = ('FIO', 'service', 'master', 'time', 'branch_office')
+    list_display = ('FIO', 'service', 'email', 'master', 'time', 'branch_office')
     list_filter = ('service', 'master', 'time', 'branch_office', 'signup_time')
 
 

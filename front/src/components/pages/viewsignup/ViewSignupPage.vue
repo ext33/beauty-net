@@ -3,7 +3,6 @@
     <Nav/>
     <Loading v-if="loading"/>
     <ViewContainer v-if="data" :id="id" :data="data"/>
-    <Footer/>
   </div>
 </template>
 
@@ -11,11 +10,10 @@
 import ViewContainer from "@/components/pages/viewsignup/ViewContainer";
 import api from "@/axios";
 import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import Loading from "@/components/Loading";
 export default {
   name: "ViewSignupPage",
-  components: {Footer, Nav, ViewContainer, Loading},
+  components: {Nav, ViewContainer, Loading},
   props: ['id'],
   data(){
     return {

@@ -6,6 +6,7 @@
     <div v-if="offices_data" class="form-area">
       <form class="signup-form">
         <vs-input placeholder="ВВЕДИТЕ ВАШЕ ИМЯ" v-model="name" class="input-main"/>
+        <vs-input placeholder="ВВЕДИТЕ ВАШ EMAIL" v-model="email" class="input-main"/>
         <vs-select placeholder="ВЫБЕРИТЕ ФИЛИАЛ" v-model="office" class="input-main" v-on:change="getPersonal(office)">
           <vs-option v-for="item in offices_data" :label=item.address :key="item.id" :value="item.id">
             {{ item.address }}
@@ -46,6 +47,7 @@ export default {
   components: {Loading},
   data:() => ({
     name: '',
+    email: '',
     service: '',
     master: '',
     datetime: '',
@@ -104,15 +106,20 @@ export default {
       if (event) {
         event.preventDefault()
       }
-      if(this.name && this.service && this.office && this.master && this.datetime) {
-        this.error = null
-        let request = await api.set_signup(this.name,this.service,this.master,this.datetime,this.office)
-        if (request === 404) {
-          await this.$router.push({path: '/error'})
-        } else if (request === 500) {
-          await this.router.push({path: '/error'})
+      if(this.name && this.email && this.service && this.office && this.master && this.datetime) {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (re.test(String(this.email).toLowerCase())){
+          this.error = null
+          let request = await api.set_signup(this.name,this.email,this.service,this.master,this.datetime,this.office)
+          if (request === 404) {
+            await this.$router.push({path: '/error'})
+          } else if (request === 500) {
+            await this.router.push({path: '/error'})
+          } else {
+            await this.$router.push({path: '/Signup/'+request.id})
+          }
         } else {
-          await this.$router.push({path: '/Signup/'+request.id})
+          this.error = 'Введите корректный email'
         }
       }
       else {
