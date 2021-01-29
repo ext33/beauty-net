@@ -10,7 +10,6 @@
       <font-awesome-icon icon="bars" style="height: 45px; width: 44px; color: #F7F7F7" />
     </vs-button>
     <vs-sidebar
-        absolute
         right
         background="primary"
         text-white
