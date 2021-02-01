@@ -73,7 +73,7 @@ class ServiceSignupViewSet(viewsets.ViewSet):
             serializer = ServiceSignupSerializer(signup)
             return Response(serializer.data)
         else:
-            return Response({'result': 'error', 'error': 'invalid form data'})
+            return Response(status=400, data={'result': 'error', 'error': 'invalid form data'})
 
     @staticmethod
     def update(request, pk=None):

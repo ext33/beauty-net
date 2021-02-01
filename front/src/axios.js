@@ -205,7 +205,7 @@ let api = {
        data.append('time', datetime);
        data.append('master', master);
        data.append('branch_office', office);
-       let response = await request.post(url + 'create-signup/',data ,{
+       let response = await request.post(url + 'create-signup/', data,{
            headers: {
                ...data.getHeaders
            }
