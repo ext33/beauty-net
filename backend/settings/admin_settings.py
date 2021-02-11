@@ -43,7 +43,7 @@ admin_settings = {
     #############
     # UI Tweaks #
     #############
-    "custom_css": 'css/admin.css',
+    "custom_css": 'admin.css',
     "custom_js": None,
 
     "show_ui_builder": False,

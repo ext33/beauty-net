@@ -1,0 +1,52 @@
+.card .card-primary.card-outline{
+    border-top: none !important;
+    border: none !important;
+}
+.btn-success {
+    background-color: gray;
+    border: none;
+}
+.btn {
+    border-radius: 20px !important;
+    margin: 5px !important;
+}
+.btn-outline-info{
+    color: gray;
+    border-color: gray;
+}
+.btn:hover{
+    background-color: grey;
+    border-color: grey;
+}
+.vTextField:focus{
+    border: none;
+    box-shadow: none;
+}
+.main-footer .float-right{
+    display: none !important;
+}
+.brand-text{
+    margin-left: 5px !important;
+}
+.info{
+    margin-left: 5px !important;
+}
+.img-circle{
+    background-color: #fff;
+}
+.image img{
+    display: none;
+}
+div.image::before{
+    content: url("../logos/user.svg");
+    background-color: #fff;
+    opacity: .8;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23)!important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 37px;
+    height: 37px;
+    padding-top: 3px;
+} 

@@ -135,7 +135,9 @@ MIDDLEWARE_CLASSES = (
 STATIC_URL = '/static/'
 # Place static in the same location as webpack build files
 STATIC_ROOT = os.path.join(BASE_DIR, 'front', 'dist', 'static')
-STATICFILES_DIRS = []
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'backend', 'static')
+]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

@@ -29,6 +29,15 @@ services:
       env_file:
          - env.conf
       depends_on:
+         - front
+
+   front:
+      image: node:latest
+      volumes:
+         - ./front:/srv/www/net/front/
+      working_dir: /srv/www/net/front/
+      command: bash -c "yarn install && yarn run build"
+      depends_on:
          - db
 
    nginx:
