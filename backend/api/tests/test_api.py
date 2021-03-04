@@ -12,12 +12,14 @@ class ApiTests(TestCase):
     def setUp(self) -> None:
         # Тестовый объект филиала
         BranchOffice.objects.create(
+            id=1,
             office_name='test',
             address='test',
             telephone='89456774372',
         )
         # Тестовый объект сотрудника
         Personal.objects.create(
+            id=1,
             FIO='test',
             telephone='89164567345',
             address='test',
@@ -26,6 +28,7 @@ class ApiTests(TestCase):
         )
         # Тестовый объект услуги
         Services.objects.create(
+            id=1,
             name='test',
             duration=1,
             price=1000,
@@ -33,6 +36,7 @@ class ApiTests(TestCase):
         )
         # Тестовый объект интервала для записи
         SignupTime.objects.create(
+            id=1,
             a_time=1,
             a_date='2021-02-01',
             master_id=1,
@@ -61,11 +65,11 @@ class ApiTests(TestCase):
             path='/api/create-signup/',
             data={
                 'FIO': 'Александр',
-                'service': '1',
+                'service': 1,
                 'email': 'test@test.com',
-                'time': '1',
-                'master': '1',
-                'branch_office': '1'
+                'time': 1,
+                'master': 1,
+                'branch_office': 1
             },
             format='json'
         )
@@ -80,11 +84,11 @@ class ApiTests(TestCase):
             path='/api/create-signup/',
             data={
                 'FIO': 'Александр',
-                'service': '1',
+                'service': 1,
                 'email': 'test.com',
-                'time': '1',
-                'master': '1',
-                'branch_office': '1'
+                'time': 1,
+                'master': 1,
+                'branch_office': 1
             },
             format='json'
         )
