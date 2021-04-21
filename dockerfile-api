@@ -1,7 +1,7 @@
 FROM python:3.8
 
-COPY ./backend /srv/www/net/backend/
-WORKDIR /srv/www/net/backend/
+COPY ./api-server /srv/www/net/api-server/
+WORKDIR /srv/www/net/api-server/
 
 RUN chmod +x entrypoint.sh
 RUN pip install -r pip-dependence

@@ -9,12 +9,12 @@ const rootDir = String(process.cwd() + "/")
 const app = express()
 
 // static route 
-app.use('/static', express.static(path.join(rootDir, 'front', 'dist', 'static')))
+app.use('/static', express.static(path.join(rootDir, 'staticfiles', 'static')))
 
 // vue app route
 app.get('*', (req, res) => {
     try {
-        res.sendFile(path.join(rootDir, 'front', 'dist', 'index.html'))
+        res.sendFile(path.join(rootDir, 'staticfiles', 'index.html'))
     } catch (e) {
         res.status(500).send({status: 500, error: e})
     }

@@ -121,8 +121,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
 mimetypes.add_type("text/css", ".css", True)
 
 JAZZMIN_UI_TWEAKS = admin_ui_tweaks
@@ -132,12 +130,10 @@ MIDDLEWARE_CLASSES = (
     'whitenoise.middleware.WhiteNoiseMiddleware',
 )
 
-STATIC_URL = '/static/'
-# Place static in the same location as webpack build files
-STATIC_ROOT = os.path.join(BASE_DIR, 'front', 'dist', 'static')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'backend', 'static')
-]
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.1/howto/static-files/
+STATIC_URL = '/service/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'backend', 'static')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

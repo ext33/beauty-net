@@ -22,7 +22,7 @@ services:
       restart: always
       build:
          context: .
-         dockerfile: dockerfile-server
+         dockerfile: dockerfile-api
       ports:
          - 8000:8000
       command: "bash entrypoint.sh"

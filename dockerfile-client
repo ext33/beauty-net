@@ -1,10 +1,12 @@
 FROM node:14-alpine
 
 COPY ./front-server /srv/www/net/front-server/
-WORKDIR /srv/www/net/front-server/front/
+COPY ./front /srv/www/net/front/
+WORKDIR /srv/www/net/front/
 
 RUN yarn install
 RUN yarn run build
+RUN cp -r /srv/www/net/front/dist/ /srv/www/net/front-server/staticfiles
 
 WORKDIR /srv/www/net/front-server/
 

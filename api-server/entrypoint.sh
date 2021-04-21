@@ -11,4 +11,5 @@ fi
 
 python manage.py makemigrations
 python manage.py migrate
+python manage.py collectstatic
 uwsgi --http :8000 --module wsgi

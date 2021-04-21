@@ -6,5 +6,4 @@ from django.contrib import admin
 urlpatterns = [
     path('service/api/', include(('api.apiCore.router', 'api'), namespace='api')),
     path('service/admin/', admin.site.urls),
-]
- # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
