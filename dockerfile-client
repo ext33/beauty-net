@@ -1,0 +1,11 @@
+FROM node:14-alpine
+
+COPY ./front-server /srv/www/net/front-server/
+WORKDIR /srv/www/net/front-server/front/
+
+RUN yarn install
+RUN yarn run build
+
+WORKDIR /srv/www/net/front-server/
+
+RUN yarn install

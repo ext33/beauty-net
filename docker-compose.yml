@@ -5,8 +5,8 @@ services:
         driver: local
 
 services:
-   db:
-      container_name: db
+   pg-db:
+      container_name: pg-db
       image: postgres
       environment:
          POSTGRES_USER: admin
@@ -18,29 +18,29 @@ services:
       ports:
          - 5432:5432
 
-   web:
+   server:
       restart: always
       build:
          context: .
-         dockerfile: dockerfile
-      volumes:
-         - ./:/srv/www/net/
+         dockerfile: dockerfile-server
       ports:
          - 8000:8000
       command: "bash entrypoint.sh"
       env_file:
          - env.conf
-      depends_on:
-         - front
+      links:
+         - client
 
-   front:
-      image: node:latest
-      volumes:
-         - ./front:/srv/www/net/front/
-      working_dir: /srv/www/net/front/
-      command: bash -c "yarn install && yarn run build"
-      depends_on:
-         - db
+   client:
+      restart: always
+      build:
+         context: .
+         dockerfile: dockerfile-client
+      ports:
+         - 3000:3000
+      command: server.js
+      links:
+         - pg-db
 
    nginx:
       restart: always
@@ -53,5 +53,5 @@ services:
          - ./net/static/:/srv/www/net/static/
          - ./net/logs:/srv/www/net/logs
          - ./nginx-server.conf:/etc/nginx/conf.d/default.conf
-      depends_on:
-         - web
+      links:
+         - server
