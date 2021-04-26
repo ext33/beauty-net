@@ -121,8 +121,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-mimetypes.add_type("text/css", ".css", True)
-
 JAZZMIN_UI_TWEAKS = admin_ui_tweaks
 JAZZMIN_SETTINGS = admin_settings
 
@@ -133,7 +131,9 @@ MIDDLEWARE_CLASSES = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATIC_URL = '/service/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'backend', 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'api-server', 'static')
+
+mimetypes.add_type("text/css", ".css", True)
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

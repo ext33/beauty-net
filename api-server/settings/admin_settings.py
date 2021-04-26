@@ -16,8 +16,6 @@ admin_settings = {
     'welcome_sign': 'Авторизация',
     'copyright': 'BEAUTY NET',
 
-    # Field name on user model that contains avatar image
-    'user_avatar': 'logos/user.svg',
 
     #############
     # User Menu #
