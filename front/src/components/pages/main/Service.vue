@@ -6,10 +6,10 @@
 </template>
 
 <script>
-export default {
-name: "Service",
-  props: ['title', 'price']
-}
+  export default {
+    name: "Service",
+    props: ['title', 'price']
+  }
 </script>
 
 <style scoped>

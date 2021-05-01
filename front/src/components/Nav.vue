@@ -63,12 +63,12 @@
 </template>
 
 <script>
-export default {
-name: "Nav",
-  data:() => ({
-    activeSidebar: false
-  })
-}
+  export default {
+    name: "Nav",
+    data:() => ({
+      activeSidebar: false
+    })
+  }
 </script>
 
 <style scoped>

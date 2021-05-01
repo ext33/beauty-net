@@ -12,13 +12,12 @@
 </template>
 
 <script>
-import { yandexMap } from 'vue-yandex-maps'
-
-export default {
-  name: "Map",
-  components: { yandexMap },
-}
-
+  import { yandexMap } from 'vue-yandex-maps'
+  
+  export default {
+    name: "Map",
+    components: { yandexMap },
+  }
 </script>
 
 <style scoped>

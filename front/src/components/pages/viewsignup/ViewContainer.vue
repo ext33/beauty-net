@@ -41,13 +41,13 @@
 </template>
 
 <script>
-export default {
-name: "ViewContainer",
-  props: ['id', 'data'],
-  data:() => ({
-    active: false,
-  })
-}
+  export default {
+    name: "ViewContainer",
+    props: ['id', 'data'],
+    data:() => ({
+      active: false,
+    })
+  }
 </script>
 
 <style scoped>

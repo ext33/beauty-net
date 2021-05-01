@@ -23,47 +23,47 @@
 </template>
 
 <script>
-import api from "@/axios";
+  import api from "@/axios";
 
-export default {
-  name: "CancelResult",
-  props: ['id'],
-  methods:{
-    async load(id){
-      let check = 0
-      if(id !== undefined){
-        let request = api.cancel_signup(id)
-        if (request === 404) {
-          await this.$router.push({path: '/error'})
-        } else if (request === 500) {
-          await this.$router.push({path: '/error'})
-        } else {
-          check = 1
+  export default {
+    name: "CancelResult",
+    props: ['id'],
+    methods:{
+      async load(id){
+        let check = 0
+        if(id !== undefined){
+          let request = api.cancel_signup(id)
+          if (request === 404) {
+            await this.$router.push({path: '/error'})
+          } else if (request === 500) {
+            await this.$router.push({path: '/error'})
+          } else {
+            check = 1
+          }
+        }
+        let style = document.createElement('style');
+        if(check===1){
+          style.innerHTML = `
+            #success {
+            display: flex !important;
+            }
+            `;
+          document.head.appendChild(style);
+        }
+        else {
+          style.innerHTML = `
+            #error {
+            display: flex !important;
+            }
+            `;
+          document.head.appendChild(style);
         }
       }
-      let style = document.createElement('style');
-      if(check===1){
-        style.innerHTML = `
-          #success {
-          display: flex !important;
-          }
-          `;
-        document.head.appendChild(style);
-      }
-      else {
-        style.innerHTML = `
-          #error {
-          display: flex !important;
-          }
-          `;
-        document.head.appendChild(style);
-      }
+    },
+    beforeMount() {
+      this.load(this.$route.params.id)
     }
-  },
-  beforeMount() {
-    this.load(this.$route.params.id)
   }
-}
 </script>
 
 <style scoped>

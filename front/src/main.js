@@ -17,9 +17,12 @@ const settings = {
 }
 
 Vue.use(YmapPlugin, settings)
+
 Vue.use(VueRouter)
+
 library.add(fas)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 Vue.config.productionTip = false
 
 Vue.use(Vuesax, {

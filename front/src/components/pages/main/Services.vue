@@ -11,12 +11,13 @@
 </template>
 
 <script>
-import Service from "@/components/pages/main/Service";
-export default {
-  name: "Services",
-  components: {Service},
-  props: ['data'],
-}
+  import Service from "@/components/pages/main/Service";
+  
+  export default {
+    name: "Services",
+    components: {Service},
+    props: ['data'],
+  }
 </script>
 
 <style scoped>

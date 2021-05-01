@@ -7,14 +7,15 @@
 </template>
 
 <script>
-import CancelResult from "@/components/pages/cancelsignup/CancelResult";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-export default {
-  name: "CancelSignupPage",
-  components: {Footer, Nav, CancelResult},
-  props: ['id'],
-}
+  import CancelResult from "@/components/pages/cancelsignup/CancelResult";
+  import Nav from "@/components/Nav";
+  import Footer from "@/components/Footer";
+  
+  export default {
+    name: "CancelSignupPage",
+    components: {Footer, Nav, CancelResult},
+    props: ['id'],
+  }
 </script>
 
 <style scoped>
