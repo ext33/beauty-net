@@ -5,9 +5,15 @@
       <p class="time">С 10:00 ДО 22:00</p>
     </div>
     <div class="right-text">
-      <a href="" class="link">О НАС</a>
-      <a href="" class="link">УСЛУГИ</a>
-      <a href="" class="link">КОНТАКТЫ</a>
+      <router-link to="/About">
+        <a href="" class="link">О НАС</a>
+      </router-link>
+      <router-link to="/">
+        <a href="" class="link">УСЛУГИ</a>
+      </router-link>
+      <router-link to="/About">
+        <a href="" class="link">КОНТАКТЫ</a>
+      </router-link>
     </div>
   </footer>
 </template>

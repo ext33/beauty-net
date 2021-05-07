@@ -46,18 +46,22 @@
           Записаться
         </vs-sidebar-item>
       </router-link>
-      <vs-sidebar-item id="contacts">
-        <template #icon>
-          <i class='bx bx-home'></i>
-        </template>
-        Контакты
-      </vs-sidebar-item>
-      <vs-sidebar-item id="info">
-        <template #icon>
-          <i class='bx bx-home'></i>
-        </template>
-        О нас
-      </vs-sidebar-item>
+      <router-link to="/About">
+        <vs-sidebar-item id="contacts">
+          <template #icon>
+            <i class='bx bx-home'></i>
+          </template>
+          Контакты
+        </vs-sidebar-item>
+      </router-link>
+      <router-link to="/About">
+        <vs-sidebar-item id="info">
+          <template #icon>
+            <i class='bx bx-home'></i>
+          </template>
+          О нас
+        </vs-sidebar-item>
+      </router-link>
     </vs-sidebar>
   </nav>
 </template>
