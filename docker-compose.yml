@@ -6,6 +6,7 @@ services:
 
 services:
    pg_db:
+      restart: unless-stopped
       container_name: pg_db
       image: postgres
       environment:
@@ -19,7 +20,7 @@ services:
          - 5432:5432
 
    server:
-      restart: always
+      restart: unless-stopped
       build:
          context: .
          dockerfile: dockerfile-api
@@ -32,7 +33,7 @@ services:
          - client
 
    client:
-      restart: always
+      restart: unless-stopped
       build:
          context: .
          dockerfile: dockerfile-client
@@ -43,7 +44,7 @@ services:
          - pg_db
 
    nginx:
-      restart: always
+      restart: unless-stopped
       image: nginx
       expose:
          - 8080
