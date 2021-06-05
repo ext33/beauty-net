@@ -11,6 +11,8 @@ const app = express()
 // static route 
 app.use('/static', express.static(path.join(rootDir, 'staticfiles', 'static')))
 
+app.use('/favicon', express.static(path.join(rootDir, 'favicon')))
+
 // vue app route
 app.get('*', (req, res) => {
     try {
