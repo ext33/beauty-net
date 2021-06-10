@@ -28,7 +28,9 @@
   export default {
     name: "CancelResult",
     props: ['id'],
+
     methods:{
+
       async load(id){
         let check = 0
         if(id !== undefined){
@@ -41,6 +43,7 @@
             check = 1
           }
         }
+
         let style = document.createElement('style');
         if(check===1){
           style.innerHTML = `
@@ -49,8 +52,7 @@
             }
             `;
           document.head.appendChild(style);
-        }
-        else {
+        } else {
           style.innerHTML = `
             #error {
             display: flex !important;
@@ -60,6 +62,7 @@
         }
       }
     },
+    
     beforeMount() {
       this.load(this.$route.params.id)
     }

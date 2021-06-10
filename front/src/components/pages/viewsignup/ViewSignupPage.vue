@@ -9,8 +9,8 @@
 <script>
   import ViewContainer from "@/components/pages/viewsignup/ViewContainer";
   import api from "@/axios";
-  import Nav from "@/components/Nav";
-  import Loading from "@/components/Loading";
+  import Nav from "@/components/ui/Nav";
+  import Loading from "@/components/ui/Loading";
   
   export default {
     name: "ViewSignupPage",

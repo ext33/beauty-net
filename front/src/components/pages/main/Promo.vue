@@ -28,11 +28,13 @@
   color: #F7F7F7;
   height: 100vh;
 }
+
 .m-main-text{
   text-align: center;
   font-weight: bold;
   font-size: 36px;
 }
+
 .m-second-text{
   font-size: 18px;
   text-align: center;

@@ -28,14 +28,17 @@
   color: #F7F7F7;
   flex-direction: column;
 }
+
 .services-head{
   font-size: 36px;
   text-align: center;
 }
+
 .categories{
   padding-top: 20px;
   padding-bottom: 100px;
 }
+
 .services-nf{
   display: flex;
   justify-content: center;

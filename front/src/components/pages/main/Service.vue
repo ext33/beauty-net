@@ -21,6 +21,7 @@
   padding-bottom: 5px;
   font-size: 18px;
 }
+
 .price{
   color: #5F8CAB;
 }

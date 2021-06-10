@@ -83,12 +83,14 @@ nav{
   align-items: center;
   color: #F7F7F7;
 }
+
 .logo{
   width: 162px;
   height: 70px;
   display: flex;
   flex-direction: column;
 }
+
 .text-logo{
   margin: 0;
   padding: 0;
@@ -97,9 +99,11 @@ nav{
   line-height: 32px;
   color: #F7F7F7;
 }
+
 .text1{
   font-weight: bold;
 }
+
 .text2{
   font-weight: lighter;
 }

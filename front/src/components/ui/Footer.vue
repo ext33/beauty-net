@@ -38,16 +38,20 @@ footer{
   flex-wrap: wrap;
   text-align: center;
 }
+
 .left-text{
   height: 40px;
 }
+
 .time{
   line-height: 0
 }
+
 .right-text{
   display: flex;
   justify-content: right;
 }
+
 .link{
   margin-left: 20px;
   color: #F7F7F7;

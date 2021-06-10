@@ -1,7 +1,7 @@
 <template>
   <div class="l-container container">
     <h1>
-      {{title}}{{id}}
+      ЗАПИСЬ НА УСЛУГУ{{id}}
     </h1>
     <div v-if="offices_data" class="form-area">
       <form class="signup-form">
@@ -39,7 +39,7 @@
 
 <script>
   import api from "@/axios";
-  import Loading from "@/components/Loading";
+  import Loading from "@/components/ui/Loading";
 
   export default {
     props: ['title', 'id'],
@@ -64,10 +64,13 @@
       error: null,
       renderComponent: true,
     }),
+
     beforeMount() {
       this.fetchData()
     },
+
     methods: {
+
       forceRerender () {
         this.renderComponent = false;
         this. $nextTick (() => {
@@ -110,9 +113,11 @@
         }
         if(this.name && this.email && this.service && this.office && this.master && this.datetime) {
           const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          
           if (re.test(String(this.email).toLowerCase())){
             this.error = null
             let request = await api.set_signup(this.name,this.email,this.service,this.master,this.datetime,this.office)
+
             if (request === 404) {
               await this.$router.push({path: '/error'})
             } else if (request === 500) {
@@ -141,6 +146,7 @@
   flex-wrap: wrap;
   flex-direction: column;
 }
+
 .input-main{
   padding: 10px 0;
   width: 65%;
@@ -149,17 +155,21 @@
   border: 0;
   color: #7A838B;
 }
+
 .input-submit{
   color: #F7F7F7;
   background-color: #5F8CAB;
   margin-top: 20px;
 }
+
 h1{
   padding-top: 30px;
 }
+
 .vs-select-content {
   max-width: 100% !important;
 }
+
 .error{
   display: flex;
   justify-content: center;

@@ -1,20 +1,17 @@
 <template>
   <div id="signup-page">
     <Nav/>
-    <SignupContainer :title="title"/>
+    <SignupContainer />
   </div>
 </template>
 
 <script>
-  import SignupContainer from "@/components/SignupContainer";
-  import Nav from "@/components/Nav";
+  import SignupContainer from "@/components/pages/signup/SignupContainer";
+  import Nav from "@/components/ui/Nav";
 
   export default {
     name: "SignupPage",
     components: {Nav, SignupContainer},
-    data:() => ({
-      title: 'ЗАПИСЬ НА УСЛУГУ'
-    }),
   }
 </script>
 

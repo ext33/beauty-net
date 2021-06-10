@@ -19,6 +19,7 @@
   justify-content: center;
   width: 100%;
 }
+
 .spinner {
   height: 60px;
   width: 60px;

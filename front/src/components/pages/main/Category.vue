@@ -15,6 +15,7 @@
   font-size: 18px;
   padding-right: 30px;
 }
+
 .category-link-active{
   color: #5F8CAB;
 }

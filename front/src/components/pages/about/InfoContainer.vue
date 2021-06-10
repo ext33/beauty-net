@@ -35,13 +35,16 @@
     margin-top: 52px;
     padding: 80px 40px;
 }
+
 .info-about-count{
     font-size: 24px;
     margin-bottom: 60px;
 }
+
 .info-about{
     font-size: 22px;
 }
+
 .info-contacts{
     margin-top: 60px;
     font-size: 24px;
